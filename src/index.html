@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>下载Custom.xaml</title>
+    <style>
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fb;
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #1e293b;
+        }
+        .card {
+            background: white;
+            padding: 2rem 2.5rem;
+            border-radius: 2rem;
+            box-shadow: 0 20px 35px -8px rgba(0,0,0,0.1);
+            max-width: 420px;
+            border: 1px solid #e9eef2;
+        }
+        h1 {
+            font-weight: 500;
+            font-size: 1.8rem;
+            letter-spacing: -0.01em;
+            margin-top: 0.2rem;
+            margin-bottom: 0.5rem;
+        }
+        .status {
+            background: #f1f4f9;
+            padding: 0.8rem 1.2rem;
+            border-radius: 60px;
+            font-size: 0.95rem;
+            color: #2c3e50;
+            border: 1px solid #dde3ea;
+            display: inline-block;
+            margin: 1.2rem 0 1.5rem 0;
+        }
+        .manual-link {
+            display: inline-block;
+            background: #1e293b;
+            color: white;
+            text-decoration: none;
+            padding: 0.7rem 1.8rem;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 1rem;
+            border: none;
+            transition: background 0.2s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        .manual-link:hover {
+            background: #0f172a;
+        }
+        .manual-link:active {
+            transform: scale(0.97);
+        }
+        .note {
+            font-size: 0.85rem;
+            color: #5f6c84;
+            margin-top: 1.8rem;
+            border-top: 1px dashed #d0d8e3;
+            padding-top: 1rem;
+        }
+        .note strong {
+            color: #1e293b;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>⏳ 准备文件</h1>
+        <div class="status">📄 Custom.xaml </div>
+        <p style="margin: 0.5rem 0 1.8rem 0; color: #3b4b62;">
+            如果下载未自动开始，请点击下方按钮
+        </p>
+        <!-- 手动备用下载链接（同样强制 download） -->
+        <a href="Custom.xaml" download="Custom.xaml" class="manual-link">⬇️ 手动下载 .xaml</a>
+        <div class="note">
+            <strong>🧠 下载已执行</strong> — 若浏览器阻止了自动下载，<br>请允许或使用上方按钮。
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // 等待页面所有资源载入完成
+            window.addEventListener('load', function() {
+
+                const downloadLink = document.createElement('a');
+                downloadLink.href = 'Custom.xaml';
+                downloadLink.download = 'Custom.xaml';
+                downloadLink.style.display = 'none';
+                document.body.appendChild(downloadLink);
+                
+                // 点击触发下载
+                downloadLink.click();
+                setTimeout(() => {
+                    if (downloadLink.parentNode) {
+                        downloadLink.parentNode.removeChild(downloadLink);
+                    }
+                }, 150);
+            });
+        })();
+    </script>
+</body>
+</html>
