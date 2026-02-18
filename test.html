@@ -1,10 +1,9 @@
-html
 <!DOCTYPE html>
 <html lang="zh-Hans">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>普兰主页 · 滑动卡片 + 文档</title>
+    <title>普兰主页 · The Plain Page</title>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script>
     // 原有雪花效果 (保持不变)
@@ -209,7 +208,7 @@ html
 
         /* 左侧箭头位置：卡片左侧边缘再往左36px (卡片左边缘在50% - 300px) */
         .flip-arrow.arrow--left {
-            left: calc(50% - 384px);   /* 50% - 300px - 36px = 50% - 336px? 原为384，保持一致：300+84? 实际原fixed left: calc(50% - 384px) 对应左边缘左移84px? 我们保持与原计算一致：384 = 300 + 84，也就是左侧箭头距离卡片左边缘还有84px？但原箭头是放在卡片左侧外面，可能原设计左侧箭头位置是左侧边缘再往左36px？我们严格按照原值：原arrow--left: calc(50% - 384px)，卡片左边缘在calc(50% - 300px)，所以箭头在卡片左侧84px处。为了视觉一致，保留原数值。 */
+            left: calc(50% - 384px);
         }
 
         .flip-arrow.visible {
@@ -424,7 +423,7 @@ html
 
         <h2>📸 预览</h2>
         <blockquote>
-            <p>你可以直接看看下方截图，或者打开项目的 <a href="Xwdjjy.github.io/The-Plain-Page">Page</a> 查看效果预览</p>
+            <p>你可以直接看看下方截图，或者打开项目的 <a href="Xwdjjy.github.io/The-Plain-Page">Page</a> 查看效果预览(你现在就在这里啦~）</p>
         </blockquote>
         <p><img src="image1.png" alt="预览截图"><br>
         <img src="image2.png" alt="预览截图"><br>
