@@ -306,11 +306,16 @@
                 <p>请点击下方按钮以下载 Custom.xaml 文件，<br>下载后请将其放置在指定位置以供使用。</p>
                 <a href="Custom.xaml" download="Custom.xaml" class="manual-link">⬇️ 点击下载Custom.xaml</a>
             </div>
+            <!-- 第二个卡片：两个并排复制按钮 (CDN + GitHub Pages) -->
             <div class="card">
                 <h1>使用联网的普兰主页！🔗</h1>
                 <div class="status">🛜联网主页：复制主页链接</div>
                 <p>请点击下方按钮以复制主页链接。<br>将链接键入PCL里以部署普兰主页。</p>
-                <a href="javascript:void(0)" class="manual-link" style="background: #4a5c72;">🔧 占位按钮</a>
+                <!-- 并排按钮容器 (flex布局，支持换行) -->
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                    <a href="javascript:void(0)" class="manual-link" id="copyJsdelivr" style="background: #4a5c72;">📦 jsDelivr CDN</a>
+                    <a href="javascript:void(0)" class="manual-link" id="copyGithub" style="background: #4a5c72;">🌐 GitHub Pages</a>
+                </div>
             </div>
         </div>
     </div>
@@ -320,7 +325,36 @@
 
     <script>
         $(window).on('load', function() {
-            // 箭头出现时间提前至2000ms
+            // ---------- 复制功能（两个新按钮）----------
+            // 通用复制函数
+            function copyToClipboard(text, friendlyName) {
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText(text).then(function() {
+                        alert('✅ 已复制 ' + friendlyName + ' 链接到剪贴板\n\n' + text);
+                    }).catch(function(err) {
+                        alert('❌ 复制失败，请手动复制链接:\n' + text);
+                    });
+                } else {
+                    // 降级提示
+                    alert('您的浏览器不支持一键复制，请手动复制链接:\n' + text);
+                }
+            }
+
+            // 为 jsDelivr 按钮绑定事件
+            $('#copyJsdelivr').on('click', function(e) {
+                e.preventDefault();  // 阻止可能的跳转
+                var link = 'https://cdn.jsdelivr.net/gh/Xwdjjy/The-Plain-Page/Custom.xaml';
+                copyToClipboard(link, 'jsDelivr CDN');
+            });
+
+            // 为 GitHub Pages 按钮绑定事件
+            $('#copyGithub').on('click', function(e) {
+                e.preventDefault();
+                var link = 'https://xwdjjy.github.io/The-Plain-Page/Custom.xaml';
+                copyToClipboard(link, 'GitHub Pages');
+            });
+
+            // ---------- 原有箭头逻辑（保持不变，仅微调了选择器）----------
             setTimeout(function() {
                 var $arrow = $('#flipArrow');
                 $arrow.addClass('visible').removeClass('arrow--left').addClass('arrow--right').html('→');
@@ -330,43 +364,37 @@
                 }, 600);
             }, 2000);
 
-            // 翻页逻辑 (修复：直接根据当前卡片类决定切换方向，确保移动)
+            // 翻页逻辑
             var $slider = $('#cardsSlider');
             var $arrow = $('#flipArrow');
-            var animating = false;  // 防止连点
+            var animating = false;
 
             $arrow.on('click', function(e) {
                 e.stopPropagation();
                 if (animating) return;
                 animating = true;
 
-                // 1. 箭头淡出
                 $arrow.removeClass('visible');
 
-                // 2. 判断当前是否显示第二个卡片 (通过检查类)
                 var isSecond = $slider.hasClass('show-second');
 
                 if (!isSecond) {
-                    // 切换到第二个卡片
                     $slider.addClass('show-second');
                     $arrow.removeClass('arrow--right').addClass('arrow--left');
                     $arrow.html('←');
                 } else {
-                    // 切换回第一个卡片
                     $slider.removeClass('show-second');
                     $arrow.removeClass('arrow--left').addClass('arrow--right');
                     $arrow.html('→');
                 }
 
-                // 3. 在滑动接近完成时淡入箭头 (延迟600ms，即滑动结束后立即淡入)
                 setTimeout(function() {
                     $arrow.addClass('visible');
-                }, 600); // 滑动时长600ms，结束后淡入
+                }, 600);
 
-                // 4. 动画完全结束后解锁 (比滑动+淡入稍长)
                 setTimeout(function() {
                     animating = false;
-                }, 1000); // 600ms滑动 + 300ms淡入 + 缓冲
+                }, 1000);
             });
         });
     </script>

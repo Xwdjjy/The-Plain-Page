@@ -26,9 +26,10 @@
 
 ## 📸 预览
 
-> 你可以直接看看下方截图，或者打开项目的 [Page](index.html) 查看效果预览
+> 你可以直接看看下方截图，或者打开项目的 [Page](Xwdjjy.github.io/The-Plain-Page) 查看效果预览
 
-![预览截图](image.png)  
+![预览截图](image1.png)
+![预览截图](image2.png)
 *（实际主页效果请参考部署后体验）*
 
 ---
