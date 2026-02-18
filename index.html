@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>普兰主页 · The Plain Page</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+    window.onload = function() {
+        var minSize = 5;
+        var maxSize = 32;                // 稍微调小一点，更精致
+        var newOne = 180;                // 生成间隔（毫秒），可调节密度
+        var flakColor = "#d4f1ff";       // 淡蓝色
+        var flak = $("<div></div>").css({ position: "absolute", top: "0px" }).html("❄️");
+        var dhight = $(window).height() + 100;  // 增加100px，确保雪花完全落下后才移除
+        var dw = $(window).width();
+
+        setInterval(function() {
+            var sizeflak = minSize + Math.random() * maxSize;
+            var startLeft = Math.random() * dw;
+            var startOpacity = 0.8 + Math.random() * 0.2;  // 提高起始不透明度
+            var endTop = dhight - 100;
+            var endLeft = Math.random() * dw;
+            var durationfull = 5000 + Math.random() * 6000;
+
+            flak.clone().appendTo($("body")).css({
+                "left": startLeft,
+                "opacity": startOpacity,
+                "font-size": sizeflak,
+                "color": flakColor,
+                "z-index": 100,
+                "pointer-events": "none",
+                "text-shadow": "0 0 8px rgba(180, 230, 255, 0.9)",
+                "filter": "blur(0.3px)",
+                "transform": "rotate(" + Math.random() * 360 + "deg)"
+            }).animate({
+                "top": endTop,
+                "left": endLeft,
+                "opacity": 0.1
+            }, durationfull, function() {
+                $(this).remove();
+            });
+        }, newOne);
+    };
+    </script>
+
+    <style>
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            background: #c3d8ffe1;  /* 浅蓝色背景，让水波清晰可见 */
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #1e293b;
+            /* 确保水波相对于视口定位，且不产生滚动 */
+            overflow: hidden;
+        }
+
+        /* 卡片动画：更大幅度的下部收缩 + 浮起效果 (与之前激进版一致) */
+        .card {
+            background: white;
+            /* 卡片变大：增加padding和max-width */
+            padding: 2.5rem 3rem;           /* 原为2rem 2.5rem，增大内边距 */
+            border-radius: 2.5rem;           /* 略微增加圆角，保持协调 */
+            box-shadow: 0 25px 40px -10px rgba(0,0,0,0.15); /* 阴影稍重，适应更大卡片 */
+            max-width: 560px;                 /* 原420px → 560px */
+            border: 1px solid #e9eef2;
+
+            /* 保证卡片位于水波上方（白色背景会遮挡卡片区域的水波，只让背景出现涟漪） */
+            position: relative;
+            z-index: 3;
+
+            /* 初始状态：极度收缩、下沉、透视变形（保持比例） */
+            opacity: 0;
+            transform: perspective(500px) rotateX(-15deg) scale(0.75) translateY(70px);
+            animation: cardFloatUp 0.85s cubic-bezier(0.2, 0.9, 0.3, 1.2) forwards;
+            transform-origin: center center;
+            will-change: transform, opacity;
+        }
+
+        /* 卡片关键帧 */
+        @keyframes cardFloatUp {
+            0% {
+                opacity: 0;
+                transform: perspective(500px) rotateX(-18deg) scale(0.7) translateY(80px);
+            }
+            60% {
+                /* 中途回弹，此时水波开始出现 */
+                transform: perspective(500px) rotateX(-3deg) scale(0.96) translateY(10px);
+                opacity: 0.9;
+            }
+            100% {
+                opacity: 1;
+                transform: perspective(500px) rotateX(0deg) scale(1) translateY(0);
+            }
+        }
+
+        /* ---------- 水波涟漪层（更粗、更明显、透明度降低） ---------- */
+        /* 所有水波共用特性：固定在视口中心，圆形，半透明，不可点击，位于卡片下方 */
+        .ripple {
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);    /* 基础半透明白，与背景融合 */
+            pointer-events: none;      /* 让点击穿透到卡片按钮 */
+            z-index: 1;                /* 位于卡片下方 */
+            animation: rippleEffect ease-out forwards;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.726); /* 更强光晕，更粗 */
+            will-change: transform, opacity;
+        }
+
+        /* 增大所有水波的尺寸 + 提高不透明度 + 加强阴影 */
+        .ripple-1 {
+            width: 80px;                /* 原30px → 80px */
+            height: 80px;
+            background: rgba(170, 210, 255, 0.55);  /* 原0.35 → 0.55，更实 */
+            animation-delay: 0.12s;
+            animation-duration: 2.0s;
+            box-shadow: 0 0 45px rgba(255, 255, 255, 0.8); /* 增强 */
+        }
+        .ripple-2 {
+            width: 150px;               /* 原70px → 150px */
+            height: 150px;
+            background: rgba(190, 225, 255, 0.5);   /* 原0.3 → 0.5 */
+            animation-delay: 0.20s;
+            animation-duration: 2.3s;
+            box-shadow: 0 0 55px rgba(249, 252, 255, 0.75);
+        }
+        .ripple-3 {
+            width: 220px;               /* 原120px → 220px */
+            height: 220px;
+            background: rgba(210, 235, 255, 0.45);  /* 原0.25 → 0.45 */
+            animation-delay: 0.34s;
+            animation-duration: 2.6s;
+            box-shadow: 0 0 65px rgba(234, 246, 255, 0.7);
+        }
+        .ripple-4 {
+            width: 300px;               /* 原180px → 300px */
+            height: 300px;
+            background: rgba(230, 245, 255, 0.4);   /* 原0.2 → 0.4 */
+            animation-delay: 0.42s;
+            animation-duration: 3.0s;
+            box-shadow: 0 0 80px rgba(226, 243, 255, 0.7);
+        }
+        /* 再多一层更淡更持久的涟漪 */
+        .ripple-5 {
+            width: 380px;               /* 原240px → 380px */
+            height: 380px;
+            background: rgba(200, 220, 250, 0.3);   /* 原0.15 → 0.3 */
+            animation-delay: 0.5s;
+            animation-duration: 3.5s;
+            box-shadow: 0 0 100px rgb(255, 255, 255);
+        }
+
+        /* 水波动画：从中心0放大到极大，同时淡出 (终点scale保持10) */
+        @keyframes rippleEffect {
+            0% {
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 0.95;          /* 起始更高不透明度 */
+            }
+            40% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(10);
+                opacity: 0;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .card {
+                animation: none;
+                opacity: 1;
+                transform: none;
+            }
+            .ripple {
+                display: none;  /* 关闭水波 */
+            }
+        }
+
+        /* 其余样式保持原样，视觉细节不变 */
+        h1 {
+            font-weight: 500;
+            font-size: 2rem;           /* 稍微增大标题，与更大卡片匹配 */
+            letter-spacing: -0.01em;
+            margin-top: 0.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .status {
+            background: #f1f4f9;
+            padding: 0.8rem 1.2rem;
+            border-radius: 60px;
+            font-size: 1rem;            /* 稍大一点 */
+            color: #2c3e50;
+            border: 1px solid #dde3ea;
+            display: inline-block;
+            margin: 1.2rem 0 1.5rem 0;
+        }
+
+        .manual-link {
+            display: inline-block;
+            background: #1e293b;
+            color: white;
+            text-decoration: none;
+            padding: 0.8rem 2rem;        /* 按钮稍大 */
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 1.1rem;
+            border: none;
+            transition: background 0.2s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        .manual-link:hover {
+            background: #0f172a;
+        }
+
+        .manual-link:active {
+            transform: scale(0.97);
+        }
+
+        /* 段落文字稍大，适应卡片尺寸 */
+        .card p {
+            font-size: 1.05rem;
+            margin: 0.5rem 0 1.8rem 0;
+            color: #3b4b62;
+        }
+    </style>
+</head>
+<body>
+    <!-- 多层水波元素 -->
+    <div class="ripple ripple-1"></div>
+    <div class="ripple ripple-2"></div>
+    <div class="ripple ripple-3"></div>
+    <div class="ripple ripple-4"></div>
+    <div class="ripple ripple-5"></div>
+
+    <!-- 主卡片 -->
+    <div class="card">
+        <h1>欢迎使用普兰主页！👏</h1>
+        <div class="status">📄 主文件 Custom.xaml</div>
+        <p>请点击下方按钮以下载 Custom.xaml 文件，<br>下载后请将其放置在指定位置以供使用。</p>
+        <!-- 下载按钮 -->
+        <a href="Custom.xaml" download="Custom.xaml" class="manual-link">⬇️ 点击下载Custom.xaml</a>
+    </div>
+
+
+</body>
+</html>
