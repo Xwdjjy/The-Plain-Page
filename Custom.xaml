@@ -1,12 +1,11 @@
 <!--
      Ciallo～(∠・ω< )⌒★
      欢迎使用The Plain Page！这是一个PCL的主页
-     \- The Plain Page v0.0.2 -\
+     \- The Plain Page v0.0.2.2 -\
       \- by Xwdjjy -\
        \- 2026 -\
-          这是一个测试页面，里面的内容都是测试用的，可能会有一些奇怪的东西，请不要在意。
-          <Image Margin="-32,0,-32,-75" Source="https://bing.biturl.top/?format=image"  />
-          <local:MyImage Margin="-32,0,-32,-75" Source="https://bing.biturl.top/?format=image" EnableCache="False" LoadingSource="pack://application:,,,/images/Blocks/RedstoneLampOff.png" />
+        \- https://Xwdjjy.github.io/The-Plain-Page/ -\
+          这是一个测试页面，里面的内容都是测试用的，可能会有一些奇怪的东西，请不要在意awa
 -->
 
 
@@ -23,7 +22,6 @@
           <!--回声洞-->
           <TextBlock Margin="-10,8,0,2" TextWrapping="Wrap" HorizontalAlignment="Center"
                Foreground="{DynamicResource ColorBrush1}" Text="{cave}" />
-<!--制作时使用的刷新，记得删！！！-->
           <Grid>
                <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*" />
