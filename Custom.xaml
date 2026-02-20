@@ -49,7 +49,7 @@
           <local:MyListItem Margin="-2,0,2,0" Logo="pack://application:,,,/images/blocks/GoldBlock.png" Title="关于本页" Info="看看关于本页的介绍吧！" Type="Clickable" >
                <local:CustomEventService.Events>
 				<local:CustomEventCollection>
-					<local:CustomEvent Type="弹出窗口" Data="欢迎使用普兰主页|这是由Xiaowu制作并更新维护的PCL主页项目The Plain Page(简称TPP)！\点击下方OK将进入TPP的网页。\n当前版本：v0.0.2.1|-" />
+					<local:CustomEvent Type="弹出窗口" Data="欢迎使用普兰主页|这是由Xiaowu制作并更新维护的PCL主页项目The Plain Page(简称TPP)！\可以看看下方关于进入TPP的网页。\n当前版本：v0.0.2.2|-" />
 					<local:CustomEvent Type="打开网页" Data="https://Xwdjjy.github.io/The-Plain-Page/" />
 				</local:CustomEventCollection>
 			</local:CustomEventService.Events>
@@ -124,8 +124,11 @@
                EventData="https://xwdjjy.github.io/src/projects/plain_page/redirect/"
                Type="Clickable" />
           <local:MyListItem Margin="-2,0,10,0" Info="打开Xwdjjy的GitHub主页"
-               Logo="pack://application:,,,/images/blocks/Grass.png" Title="GitHub主页"
+               Logo="pack://application:,,,/images/blocks/Grass.png" Title="作者GitHub主页"
                EventType="打开网页" EventData="https://github.com/Xwdjjy" Type="Clickable" />
+          <local:MyListItem Margin="-2,0,10,0" Info="打开PTT的GitHub Pages主页，里面有一些关于PCL的文档和教程，欢迎访问！"
+               Logo="pack://application:,,,/images/blocks/Grass.png" Title="PTT的GitHub Pages主页"
+               EventType="打开网页" EventData="https://xwdjjy.github.io/The-Plain-Page/" Type="Clickable" />
      </StackPanel>
 </local:MyCard>
 
