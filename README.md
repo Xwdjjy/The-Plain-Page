@@ -53,6 +53,8 @@
   `https://cdn.jsdelivr.net/gh/Xwdjjy/The-Plain-Page/Custom.xaml`
 - **GitHub Pages（可能不稳定）**  
   `https://xwdjjy.github.io/The-Plain-Page/Custom.xaml`
+- **Github Release (和page一样）**  
+  `https://github.com/Xwdjjy/The-Plain-Page/releases/latest/download/Custom.xaml`
 
 在 PCLⅡ 的“主页”设置中选择“联网更新”，粘贴上述链接即可。
 
