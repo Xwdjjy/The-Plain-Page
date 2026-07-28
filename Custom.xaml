@@ -1,7 +1,7 @@
 <!--
      Ciallo～(∠・ω< )⌒★
      欢迎使用The Plain Page！这是一个PCL的主页
-     \- The Plain Page v0.0.2.2fix -\
+     \- TPP v0.0.2.2f -\
       \- by Xwdjjy -\
        \- 2026 -\
         \- https://Xwdjjy.github.io/The-Plain-Page/ -\
@@ -118,8 +118,8 @@
           <local:MyListItem Margin="-2,0,10,0" Info="打开Xwdjjy的GitHub主页"
                Logo="pack://application:,,,/images/blocks/Grass.png" Title="作者GitHub主页"
                EventType="打开网页" EventData="https://github.com/Xwdjjy" Type="Clickable" />
-          <local:MyListItem Margin="-2,0,10,0" Info="打开PTT的GitHub Pages主页，里面有一些关于PCL的文档和教程，欢迎访问！"
-               Logo="pack://application:,,,/images/blocks/Grass.png" Title="PTT的GitHub Pages主页"
+          <local:MyListItem Margin="-2,0,10,0" Info="打开TPP的GitHub Pages主页，里面有一些关于PCL的文档和教程，欢迎访问！"
+               Logo="pack://application:,,,/images/blocks/Grass.png" Title="TPP的GitHub Pages主页"
                EventType="打开网页" EventData="https://xwdjjy.github.io/The-Plain-Page/" Type="Clickable" />
      </StackPanel>
 </local:MyCard>
