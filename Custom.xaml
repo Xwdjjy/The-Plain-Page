@@ -5,7 +5,7 @@
       \- by Xwdjjy -\
        \- 2026 -\
         \- https://Xwdjjy.github.io/The-Plain-Page/ -\
-          这是一个测试页面，里面的内容都是测试用的，可能会有一些奇怪的东西，请不要在意awa
+          这是一个测试版本，可能会有一些奇怪的东西，请不要在意awa
 -->
 
 
@@ -98,7 +98,7 @@
                          Text="开始下载" Margin="5,5,0,0" Grid.Row= "1" Padding="2,0,2,0"
                          ColorType="Highlight" Logo="M6.414 14 12 19.587 17.586 14H15c-.545 0-1-.455-1-1V4h-4v9a1 1 0 0 1-1 1H6.414Zm-1.926.902C3.417 13.831 4.175 12 5.69 12H8V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v8h2.31c1.515 0 2.273 1.831 1.202 2.902l-6.451 6.453a1.5 1.5 0 0 1-2.122 0l-6.451-6.453Z" />
                </Grid>
-               <local:MyImage Height="133" Margin="6,0,6,0" Source="E:\The Plain Page\for test\PCL\Moving.jpg" />
+               <local:MyImage Height="133" Margin="6,0,6,0" Source=".\PCL\Moving.jpg" />
           </StackPanel>
      </local:MyCard>
 </Grid>
