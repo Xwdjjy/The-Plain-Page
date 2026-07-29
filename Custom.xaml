@@ -59,7 +59,7 @@
                Type="Clickable"
                Info="打开有其他常用网站的页面。"
                EventType="打开帮助"
-               EventData="https://mfn233.github.io/PCL-Mainpage/urlshortcut/main.json" />
+               EventData="https://mfn233.github.io/PCL-Mainpage/urlshortcut/main.json" /> <!--有时间再写自己的，先用MFn老师的/(ㄒoㄒ)/~~-->
      </StackPanel>          
 </local:MyCard>
 
