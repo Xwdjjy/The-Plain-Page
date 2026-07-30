@@ -61,7 +61,7 @@
 Copyright © 2026 Xwdjjy. All rights reserved.  
 本项目仅供个人学习与使用，未经许可不得用于商业用途。
 <p align="center">
-  <a href="https://github.com/Xwdjjy">作者 GitHub</a> · 
-  <a href="https://xwdjjy.github.io/src/projects/plain_page/redirect/">作者网站</a> · 
+  <a href="https://github.com/Xwdjjy">作者主页</a> · 
+  <a href="https://xwdjjy.github.io/src/projects/plain_page/redirect/">作者个人网站</a> · 
   <a href="https://github.com/Xwdjjy/The-Plain-Page">项目仓库</a>
 </p>
